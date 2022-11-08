@@ -2,6 +2,11 @@
 
 @section('title', 'Capaian | PU Pemrov NTB')
 
+@section('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+@endsection
+
 @section('contents')
     <form action="{{ route('capaian.store') }}" method="POST" class="mb-4">
         @csrf
