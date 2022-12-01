@@ -5,7 +5,9 @@
 @section('contents')
     @if(!Auth::guest())
         <div class="text-end">
-            <a href="{{ route('home.edit') }}" class="btn btn-primary">Edit</a>
+            <a href="{{ route('home.edit') }}" class="btn btn-primary btn-sm">
+                <i class="fa fa-edit"></i> Edit
+            </a>
         </div>
     @endif
     <div class="mb-3">
@@ -14,7 +16,7 @@
     </div>
     <div class="mb-3">
         <h5>Profil</h5>
-        {{ $apps->visi }}
+        {{ $apps->profil }}
     </div>
     <div class="mb-3">
         <h5>Visi</h5>

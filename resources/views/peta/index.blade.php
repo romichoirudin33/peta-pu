@@ -5,7 +5,9 @@
 @section('contents')
     @if(!Auth::guest())
         <div class="text-end">
-            <a href="{{ route('peta.create') }}" class="btn btn-primary">Tambah</a>
+            <a href="{{ route('peta.create') }}" class="btn btn-primary btn-sm">
+                <i class="fa fa-plus"></i> Tambah
+            </a>
         </div>
     @endif
     <div class="px-5 my-3">
@@ -18,8 +20,8 @@
                             <form action="{{ route('peta.destroy', $i->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{ route('peta.edit', $i->id) }}" class="btn btn-primary">Edit</a>
-                                <button type="button" onclick="if (confirm('anda yakin akan menghapus ini ?')) this.form.submit()" class="btn btn-danger">Hapus</button>
+                                <a href="{{ route('peta.edit', $i->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                                <button type="button" onclick="if (confirm('anda yakin akan menghapus ini ?')) this.form.submit()" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</button>
                             </form>
                         </div>
                     @endif

@@ -13,7 +13,8 @@
     <link rel="icon" href="{{ asset('assets/pemprov-ntb.png') }}">
     <style>
         body {
-            background-image: linear-gradient(180deg, #eee, #fff 100px, #fff);
+            /*background-image: linear-gradient(180deg, #2980b9, #fff 100px, #fff);*/
+            background-image: linear-gradient(180deg, #151e72, #f1c40f 200px, #f1c40f);
         }
         .container {
             max-width: 960px;
@@ -28,48 +29,55 @@
     @yield('css')
 </head>
 <body>
-<div class="container">
-    <header class="mt-5">
-        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-                <img src="{{ asset('assets/pemprov-ntb.png') }}" alt="pemprov-ntb" style="height: 50px">
-                <span class="ms-3">PU Pemprov NTB</span>
-            </a>
-
-            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                <a class="me-3 py-2 text-dark text-decoration-none" href="{{ route('home') }}">Beranda</a>
-                <a class="me-3 py-2 text-dark text-decoration-none" href="{{ route('peta.index') }}">Peta</a>
-                <a class="me-3 py-2 text-dark text-decoration-none" href="{{ route('data.index') }}">Data</a>
-                <a class="py-2 text-dark text-decoration-none" href="{{ route('capaian.index') }}">Capaian</a>
-                @if(Auth::guest())
-                    <a class="ms-5 py-2 text-dark text-decoration-none" href="{{ route('login') }}">Login</a>
-                @else
-                    <div class="dropdown ms-5">
-                        <a class="btn btn-link text-decoration-none dropdown-toggle shadow-none text-capitalize" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route('login.reset_password') }}">Ganti Password</a></li>
-                            <li><a class="dropdown-item" href="{{ route('login.logout') }}">Logout</a></li>
-                        </ul>
-                    </div>
-                @endif
-            </nav>
-        </div>
-    </header>
-    <main>
-        @yield('contents')
-    </main>
+<div>
+    <div class="text-white py-2 px-5">
+        <small>{{ \Carbon\Carbon::now()->locale('id')->format('d F Y') }}</small>
+    </div>
 </div>
-<footer class="py-4 pt-md-5 border-top bg-secondary text-white">
+<header class="bg-white">
+    <div class="d-flex flex-column flex-md-row align-items-center mb-1 mx-3 p-2 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+            <img src="{{ asset('assets/pemprov-ntb.png') }}" alt="pemprov-ntb" style="height: 50px; margin-right: 1.5em; margin-left: 1.5em">
+            <img src="{{ asset('assets/pu.png') }}" alt="pu" style="height: 40px">
+            <span class="ms-3 fw-bold" style="line-height: 1">
+                    Dinas Pekerjaan Umum<br> dan Penataan Ruang <br> Provinsi Nusa Tenggara Barat
+                </span>
+        </a>
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <a class="me-3 py-2 text-dark text-decoration-none {{ (request()->is('/')) ? 'fw-bold' : '' }}" href="{{ route('home') }}">Beranda</a>
+            <a class="me-3 py-2 text-dark text-decoration-none {{ (request()->is('peta*')) ? 'fw-bold' : '' }}" href="{{ route('peta.index') }}">Peta</a>
+            <a class="me-3 py-2 text-dark text-decoration-none {{ (request()->is('data*')) ? 'fw-bold' : '' }}" href="{{ route('data.index') }}">Data</a>
+            <a class="py-2 text-dark text-decoration-none {{ (request()->is('capaian*')) ? 'fw-bold' : '' }}" href="{{ route('capaian.index') }}">Capaian</a>
+            @if(Auth::guest())
+                <a class="ms-5 py-2 text-dark text-decoration-none {{ (request()->is('login*')) ? 'fw-bold' : '' }}" href="{{ route('login') }}">Login</a>
+            @else
+                <div class="dropdown ms-5">
+                    <a class="btn text-decoration-none dropdown-toggle shadow-none text-capitalize" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{ route('login.reset_password') }}">Ganti Password</a></li>
+                        <li><a class="dropdown-item" href="{{ route('login.logout') }}">Logout</a></li>
+                    </ul>
+                </div>
+            @endif
+        </nav>
+    </div>
+</header>
+<main class="bg-white py-3">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <img class="mb-2" src="{{ asset('assets/dpupr-ntb.png') }}" alt="dpupr" >
-                <small class="d-block mb-3 text-muted">&copy; 2022–{{ date('Y') }}</small>
+        @yield('contents')
+    </div>
+</main>
+<footer class="py-4 pt-md-5 border-top text-white mt-5" style="background-color: #151e72">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4 offset-2">
+{{--                <img class="mb-2" src="{{ asset('assets/dpupr-ntb.png') }}" alt="dpupr" >--}}
+{{--                <small class="d-block mb-3 text-muted">&copy; 2022–{{ date('Y') }}</small>--}}
+                <h5>Tentang Kami</h5>
             </div>
             <div class="col-md-4">
-                <h5 class="mb-5">Tentang Kami</h5>
                 <ul class="list-unstyled text-small">
                     <li class="mb-3">
                         <small>Jl. Majapahit No. 08</small><br>
@@ -86,6 +94,9 @@
         </div>
     </div>
 </footer>
+<div class="text-center py-3">
+    2022-{{ date('Y') }} &copy; Dinas Pekerjaan Umum dan Penataan Ruang Provinsi Nusa Tenggara Barat
+</div>
 
 <script src="{{ asset('assets/bootstrap/bootstrap.bundle.min.js') }}" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 @yield('js')

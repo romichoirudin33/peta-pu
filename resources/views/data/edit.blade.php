@@ -134,7 +134,11 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <img src="{{ asset('storage/'.$data->image->file) }}" alt="image" class="img-fluid" id="img_preview">
+                @if($data->image)
+                    <img src="{{ asset('storage/'.$data->image->file) }}" alt="image" class="img-fluid" id="img_preview">
+                @else
+                    <div class="text-center">Tidak terdapat gambar</div>
+                @endif
             </div>
         </div>
     </form>
