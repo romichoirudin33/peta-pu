@@ -86,10 +86,10 @@
                         Mataram, NTB
                     </li>
                     <li class="mb-1">
-                        +62370 634479
+                        +6287846852745
                     </li>
                     <li class="mb-1">
-                        dpu@ntbprov.go.id
+                        ck.dpuprntb@gmail.com
                     </li>
                 </ul>
             </div>

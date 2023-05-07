@@ -19,13 +19,13 @@
         {{ $apps->profil }}
     </div>
     <div class="mb-3">
-        <h5>Visi</h5>
+        <h5>Visi dan Misi</h5>
         {{ $apps->visi }}
     </div>
-    <div class="mb-3">
-        <h5>Misi</h5>
-        {{ $apps->misi }}
-    </div>
+{{--    <div class="mb-3">--}}
+{{--        <h5>Misi</h5>--}}
+{{--        {{ $apps->misi }}--}}
+{{--    </div>--}}
     <div class="row">
         <div class="col-md-6">
             <img src="{{ asset('assets/no-image.png') }}" alt="empty" class="img-fluid">
