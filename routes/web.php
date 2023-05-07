@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function (){
     Route::get('edit', [LandingController::class, 'edit'])->name('home.edit');
     Route::post('edit', [LandingController::class, 'store'])->name('home.store');
 
+    Route::resource('image-assets', \App\Http\Controllers\ImageAssetController::class);
+
     Route::get('/peta/create', [PetaController::class, 'create'])->name('peta.create');
     Route::post('/peta', [PetaController::class, 'store'])->name('peta.store');
     Route::get('/peta/{id}/edit', [PetaController::class, 'edit'])->name('peta.edit');

@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             UserSeeder::class,
-            AppsSeeder::class
+            AppsSeeder::class,
+            ImageAssetsSeeder::class
         ]);
     }
 }

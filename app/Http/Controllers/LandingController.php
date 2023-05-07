@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppsDetail;
+use App\Models\ImageAsset;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -10,7 +11,12 @@ class LandingController extends Controller
     public function index()
     {
         $apps = AppsDetail::find(1);
-        return view('welcome', compact('apps'));
+        $bigImage = ImageAsset::where('is_main', true)->inRandomOrder()->first();
+        $smallImage = ImageAsset::where('is_main', false)->inRandomOrder()->get();
+        return view('welcome')
+            ->with('apps', $apps)
+            ->with('bigImage', $bigImage)
+            ->with('smallImage', $smallImage);
     }
 
     public function edit()
