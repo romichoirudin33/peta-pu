@@ -10,11 +10,12 @@
             </a>
         </div>
     @endif
-    <div class="px-5 my-3">
+    <div class="px-5 my-3" style="min-height: 400px">
         @foreach($data as $i)
             <div class="card" style="border-radius: 1em">
                 <div class="card-body">
-                    <img src="{{ asset('storage/'.$i->file) }}" alt="peta-{{$i->id}}" class="img-fluid mb-3">
+                    <img src="/{{ $i->file }}" alt="peta-{{$i->id}}" class="img-fluid mb-3">
+{{--                    <img src="{{ asset('storage/'.$i->file) }}" alt="peta-{{$i->id}}" class="img-fluid mb-3">--}}
                     @if(!Auth::guest())
                         <div class="text-center mb-4">
                             <form action="{{ route('peta.destroy', $i->id) }}" method="POST">

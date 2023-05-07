@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Peta;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class PetaController extends Controller
@@ -22,11 +23,16 @@ class PetaController extends Controller
 
     public function store(Request $request)
     {
-        $name =  Carbon::now()->timestamp .'_'. $request->file('file_gambar')->getClientOriginalName();
-        $path = $request->file('file_gambar')->storeAs(
-            'peta',
-            $name
-        );
+        $destinationPath = 'assets/peta';
+        $myImage = Carbon::now()->timestamp.'.'. $request->file('file_gambar')->getClientOriginalExtension();
+        $request->file('file_gambar')->move(public_path($destinationPath), $myImage);
+        $path = $destinationPath .'/'. $myImage;
+
+//        $name =  Carbon::now()->timestamp .'_'. $request->file('file_gambar')->getClientOriginalName();
+//        $path = $request->file('file_gambar')->storeAs(
+//            'peta',
+//            $name
+//        );
         $data = new Peta();
         $data->file = $path;
         $data->save();
@@ -44,14 +50,20 @@ class PetaController extends Controller
     {
         $data = Peta::findOrFail($id);
         if($data->file){
-            Storage::delete($data->file);
+            File::delete(public_path($data->file));
+//            Storage::delete($data->file);
         }
 
-        $name =  Carbon::now()->timestamp .'_'. $request->file('file_gambar')->getClientOriginalName();
-        $path = $request->file('file_gambar')->storeAs(
-            'peta',
-            $name
-        );
+        $destinationPath = 'assets/peta';
+        $myImage = Carbon::now()->timestamp.'.'. $request->file('file_gambar')->getClientOriginalExtension();
+        $request->file('file_gambar')->move(public_path($destinationPath), $myImage);
+        $path = $destinationPath .'/'. $myImage;
+
+//        $name =  Carbon::now()->timestamp .'_'. $request->file('file_gambar')->getClientOriginalName();
+//        $path = $request->file('file_gambar')->storeAs(
+//            'peta',
+//            $name
+//        );
         $data->file = $path;
         $data->save();
 
@@ -62,7 +74,8 @@ class PetaController extends Controller
     {
         $data = Peta::where('id', $id)->first();
         if($data->file){
-            Storage::delete($data->file);
+            File::delete(public_path($data->file));
+//            Storage::delete($data->file);
         }
         $data->delete();
         return redirect()->route('peta.index');
