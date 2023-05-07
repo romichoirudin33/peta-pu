@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('desa')->nullable();
             $table->string('kabupaten')->nullable();
             $table->string('jumlah_terlayani')->nullable();
-            $table->double('lat')->nullable();
-            $table->double('lng')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->string('dimensi')->nullable();
             $table->string('panjang_pipa')->nullable();
             $table->timestamps();

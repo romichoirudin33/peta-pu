@@ -15,7 +15,7 @@
             </a>
         </div>
     @endif
-    <div class="my-3">
+    <div class="my-3" style="min-height: 400px">
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -24,9 +24,7 @@
                 <th>Tahun</th>
                 <th>Jumlah KK Terlayani</th>
                 <th>Kondisi</th>
-                @if(!Auth::guest())
-                    <th class="text-center">Pilihan</th>
-                @endif
+                <th class="text-center">Pilihan</th>
             </tr>
             </thead>
             <tbody>
@@ -37,21 +35,21 @@
                     <td>{{ $i->anggaran }}</td>
                     <td>{{ $i->jumlah_terlayani }}</td>
                     <td>{{ $i->kondisi }}</td>
-                    @if(!Auth::guest())
-                        <td class="text-center">
-                            <form action="{{ route('data.destroy', $i->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                {{--                            <a href="" class="btn btn-success"><i class="fa fa-eye"></i></a>--}}
+                    <td class="text-center">
+                        <form action="{{ route('data.destroy', $i->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <a href="{{ route('data.show', $i->id) }}" class="btn btn-secondary btn-sm"><i class="fa fa-eye"></i></a>
+                            @if(!Auth::guest())
                                 <a href="{{ route('data.edit', $i->id) }}" class="btn btn-primary btn-sm">
                                     <i class="fa fa-edit"></i>
                                 </a>
                                 <button type="button" onclick="if (confirm('anda yakin akan menghapus ini ?')) this.form.submit()" class="btn btn-danger btn-sm">
                                     <i class="fa fa-trash"></i>
                                 </button>
-                            </form>
-                        </td>
-                    @endif
+                            @endif
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>

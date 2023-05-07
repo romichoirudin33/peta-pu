@@ -135,7 +135,8 @@
             </div>
             <div class="col-md-6">
                 @if($data->image)
-                    <img src="{{ asset('storage/'.$data->image->file) }}" alt="image" class="img-fluid" id="img_preview">
+                    <img src="/{{ $data->image->file }}" alt="image" class="img-fluid" id="img_preview">
+{{--                    <img src="{{ asset('storage/'.$data->image->file) }}" alt="image" class="img-fluid" id="img_preview">--}}
                 @else
                     <div class="text-center">Tidak terdapat gambar</div>
                 @endif

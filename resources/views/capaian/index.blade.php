@@ -15,7 +15,7 @@
             </a>
         </div>
     @endif
-    <div class="my-3">
+    <div class="my-3" style="min-height: 400px">
         <table class="table table-bordered">
             <thead>
             <tr>

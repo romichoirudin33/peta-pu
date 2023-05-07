@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function (){
 
     Route::get('/data/create', [DataController::class, 'create'])->name('data.create');
     Route::post('/data', [DataController::class, 'store'])->name('data.store');
+    Route::get('/data/{id}', [DataController::class, 'show'])->name('data.show');
     Route::get('/data/{id}/edit', [DataController::class, 'edit'])->name('data.edit');
     Route::post('/data/{id}', [DataController::class, 'update'])->name('data.update');
     Route::delete('/data/{id}/destroy', [DataController::class, 'destroy'])->name('data.destroy');
