@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function (){
     Route::post('edit', [LandingController::class, 'store'])->name('home.store');
 
     Route::resource('image-assets', \App\Http\Controllers\ImageAssetController::class);
+    Route::resource('file-drives', \App\Http\Controllers\FileDriveController::class, ['only' => ['index', 'store', 'destroy']]);
 
     Route::get('/peta/create', [PetaController::class, 'create'])->name('peta.create');
     Route::post('/peta', [PetaController::class, 'store'])->name('peta.store');

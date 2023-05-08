@@ -49,10 +49,11 @@
             <a class="me-3 py-2 text-dark text-decoration-none {{ (request()->is('/')) ? 'fw-bold' : '' }}" href="{{ route('home') }}">Beranda</a>
             <a class="me-3 py-2 text-dark text-decoration-none {{ (request()->is('peta*')) ? 'fw-bold' : '' }}" href="{{ route('peta.index') }}">Peta</a>
             <a class="me-3 py-2 text-dark text-decoration-none {{ (request()->is('data*')) ? 'fw-bold' : '' }}" href="{{ route('data.index') }}">Data</a>
-            <a class="py-2 text-dark text-decoration-none {{ (request()->is('capaian*')) ? 'fw-bold' : '' }}" href="{{ route('capaian.index') }}">Capaian</a>
+            <a class="me-2 py-2 text-dark text-decoration-none {{ (request()->is('capaian*')) ? 'fw-bold' : '' }}" href="{{ route('capaian.index') }}">Capaian</a>
             @if(Auth::guest())
                 <a class="ms-5 py-2 text-dark text-decoration-none {{ (request()->is('login*')) ? 'fw-bold' : '' }}" href="{{ route('login') }}">Login</a>
             @else
+                <a class="me-3 py-2 text-dark text-decoration-none {{ (request()->is('file-drives*')) ? 'fw-bold' : '' }}" href="{{ route('file-drives.index') }}">File Drive</a>
                 <div class="dropdown ms-5">
                     <a class="btn text-decoration-none dropdown-toggle shadow-none text-capitalize" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ Auth::user()->name }}
@@ -75,8 +76,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-4 offset-2">
-{{--                <img class="mb-2" src="{{ asset('assets/dpupr-ntb.png') }}" alt="dpupr" >--}}
-{{--                <small class="d-block mb-3 text-muted">&copy; 2022–{{ date('Y') }}</small>--}}
+                {{--                <img class="mb-2" src="{{ asset('assets/dpupr-ntb.png') }}" alt="dpupr" >--}}
+                {{--                <small class="d-block mb-3 text-muted">&copy; 2022–{{ date('Y') }}</small>--}}
                 <h5>Tentang Kami</h5>
             </div>
             <div class="col-md-4">
